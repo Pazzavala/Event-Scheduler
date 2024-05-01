@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HomePage from './scenes/HomePage/HomePage.tsx';
+import AboutPage from './scenes/AboutPage/AboutPage.tsx';
+import SchdulePage from './scenes/SchedulePage/SchedulePage.tsx';
+import AddEventPage from './scenes/AddEventPage/AddEventPage.tsx';
+import UpdateEventPage from './scenes/UpdateEventPage/UpdateEventPage.tsx';
+// import Header from './components/common/Header.tsx';
+// import Footer from './components/common/Footer.tsx';
+import Layout from './scenes/Layout/Layout.tsx';
+import LoginPage from './scenes/LoginPage/LoginPage.tsx';
+// import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route
+                        path="/"
+                        element={
+                            <Navigate
+                                to="/HomePage"
+                                replace
+                            />
+                        }
+                    />
+                    <Route
+                        path="/AboutPage"
+                        element={<AboutPage />}
+                    />
+                    <Route
+                        path="/AddEventPage"
+                        element={<AddEventPage />}
+                    />
+                    <Route
+                        path="/HomePage"
+                        element={<HomePage />}
+                    />
+                    <Route
+                        path="/LoginPage"
+                        element={<LoginPage />}
+                    />
+                    <Route
+                        path="/SchedulePage"
+                        element={<SchdulePage />}
+                    />
+                    <Route
+                        path="/UpdateEventPage"
+                        element={<UpdateEventPage />}
+                    />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;
