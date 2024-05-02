@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { Box, usedMediaQuery } from '@mui/material';
+// import React, { useState } from 'react';
+import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import NavBar from '../../components/NavBar';
+import { Navbar } from '../../components/Navbar';
 
 function Layout() {
     return (
-        <Box
-            width="100%"
-            height="100%"
-        >
+        <Box width='100%' height='100%'>
             <Box>
-                <NavBar />
+                <Navbar />
                 <Outlet />
             </Box>
         </Box>
