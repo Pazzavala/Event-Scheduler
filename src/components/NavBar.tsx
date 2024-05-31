@@ -1,4 +1,4 @@
-import { CatchingPokemon } from '@mui/icons-material';
+import { EventNote } from '@mui/icons-material';
 import {
     AppBar,
     Button,
@@ -7,9 +7,13 @@ import {
     Toolbar,
     Typography,
 } from '@mui/material';
-// import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
+    const navigate = useNavigate();
+    const handleNavigation = (path: string) => {
+        navigate(path);
+    };
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -19,18 +23,49 @@ export const Navbar = () => {
                     color='inherit'
                     aria-label='logo'
                 >
-                    <CatchingPokemon />
+                    <EventNote />
                 </IconButton>
                 <Typography variant='h6' component={'div'} sx={{ flexGrow: 1 }}>
-                    POKEMONAPP
+                    Event Scheduler
                 </Typography>
                 <Stack direction={'row'} spacing={2}>
-                    <Button color='inherit'>Home Page</Button>
-                    <Button color='inherit'>Add Event</Button>
-                    <Button color='inherit'>Stocks</Button>
-                    <Button color='inherit'>Schedule</Button>
-                    <Button color='inherit'>About Me</Button>
-                    <Button color='inherit'>Login</Button>
+                    <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/')}
+                    >
+                        Home Page
+                    </Button>
+                    <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/SchedulePage')}
+                    >
+                        Schedule
+                    </Button>
+                    <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/AddEventPage')}
+                    >
+                        Add Event
+                    </Button>
+
+                    <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/AboutPage')}
+                    >
+                        About Me
+                    </Button>
+                    {/* <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/StocksPage')}
+                    >
+                        Stocks
+                    </Button> */}
+                    <Button
+                        color='inherit'
+                        onClick={() => handleNavigation('/LoginPage')}
+                    >
+                        Login
+                    </Button>
                 </Stack>
             </Toolbar>
         </AppBar>
